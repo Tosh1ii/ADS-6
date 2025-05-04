@@ -30,14 +30,14 @@ class TPQueue {
   }
 
   T pop() {
-   if (!head) {
-    throw std::string("Is empty");
-   }
-   T res = head->data;
-   Node* element = head;
-   head = head->next;
-   delete element;
-   return res;
+    if (!head) {
+     throw std::string("Is empty");
+    }
+    T res = head->data;
+    Node* element = head;
+    head = head->next;
+    delete element;
+    return res;
   }
 
   const T& front() const {
