@@ -30,9 +30,7 @@ class TPQueue {
   }
 
   T pop() {
-    if (!head) {
-     throw std::string("Is empty");
-    }
+    if (!head) throw std::runtime_error("Is empty");
     T res = head->data;
     Node* element = head;
     head = head->next;
