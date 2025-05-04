@@ -1,6 +1,7 @@
 // Copyright 2022 NNTU-CS
 #ifndef INCLUDE_TPQUEUE_H_
 #define INCLUDE_TPQUEUE_H_
+#include <string>
 
 template <typename T>
 class TPQueue {
@@ -28,16 +29,16 @@ class TPQueue {
     }
   }
 
-T pop() {
- if (!head) {
-  throw std::string("Is empty");
- }
- T res = head->data;
- Node* element = head;
- head = head->next;
- delete element;
- return res;
-}
+  T pop() {
+   if (!head) {
+    throw std::string("Is empty");
+   }
+   T res = head->data;
+   Node* element = head;
+   head = head->next;
+   delete element;
+   return res;
+  }
 
   const T& front() const {
     if (!head) throw std::runtime_error("Is empty");
