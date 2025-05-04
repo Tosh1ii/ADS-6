@@ -13,14 +13,14 @@ class TPQueue {
     }
   }
 
-  void push(const T& val) {
-    Node* newNode = new Node(val);
-    if (!head || val.prior > head->data.prior) {
+  void push(const T& element) {
+    Node* newNode = new Node(element);
+    if (!head || element.prior > head->data.prior) {
       newNode->next = head;
       head = newNode;
     } else {
       Node* current = head;
-      while (current->next && current->next->data.prior >= val.prior) {
+      while (current->next && current->next->data.prior >= element.prior) {
         current = current->next;
       }
       newNode->next = current->next;
@@ -29,16 +29,18 @@ class TPQueue {
   }
 
 T pop() {
-  if (!head) throw std::runtime_error("Queue is empty");
-  Node* temp = head;
-  T result = temp->data;
-  head = head->next;
-  delete temp;
-  return result;
+ if (!head) {
+  throw std::string("Is empty");
+ }
+ T res = head->data;
+ Node* element = head;
+ head = head->next;
+ delete element;
+ return res;
 }
 
   const T& front() const {
-    if (!head) throw std::runtime_error("Queue is empty");
+    if (!head) throw std::runtime_error("Is empty");
     return head->data;
   }
 
@@ -48,7 +50,7 @@ T pop() {
 
  private:
   struct Node {
-    explicit Node(const T& val) : data(val), next(nullptr) {}
+    explicit Node(const T& element) : data(element), next(nullptr) {}
     T data;
     Node* next;
   };
